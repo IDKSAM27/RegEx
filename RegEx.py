@@ -1,4 +1,7 @@
 import re
+import tkinter
+
+
 
 def check_missing_semicolons(code):
     pattern = r"[^\s;{}]\s*$"
