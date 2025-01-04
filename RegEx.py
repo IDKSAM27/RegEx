@@ -1,46 +1,56 @@
 import re
 import tkinter as tk
+from tkinter import scrolledtext
+from tkinter import messagebox
 
+def check_missing_semicolons(code):
+    pattern = r"[^\s;{}]\s*$"
+    errors = []
+    for i, line in enumerate(code.splitlines(), 1):
+        if re.search(pattern, line):
+            errors.append(f"Line {i}: Missing semicolon.")
+    return errors
+
+def analyse_code(code):
+    errors = []
+    errors.extend(check_missing_semicolons(code))
+    return errors
+
+def analyse_code_gui():
+    code = code_input.get("1.0", tk.END).strip()
+    if not code:
+        messagebox.showwarning("Warning", "Please enter some code to analyse.")
+        return
+
+    errors = analyse_code(code)
+    if errors:
+        result_output.config(state=tk.NORMAL)
+        result_output.delete("1.0", tk.END)
+        result_output.insert(tk.END, "Issues found:\n" + "\n".join(errors))
+        result_output.config(state=tk.DISABLED)
+    else:
+        result_output.config(state=tk.NORMAL)
+        result_output.delete("1.0", tk.END)
+        result_output.insert(tk.END, "No issues found!")
+        result_output.config(state=tk.DISABLED)
+
+# Create the main window
 root = tk.Tk()
-root.title("RegEx")
-root.geometry("800x660")
+root.title("Code Analyzer")
 
-root.resizable(width=False, height=False)
+# Create widgets
+input_label = tk.Label(root, text="Enter your code below:")
+code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=15)
+analyze_button = tk.Button(root, text="Analyze Code", command=analyse_code_gui)
+result_label = tk.Label(root, text="Results:")
+result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=10, state=tk.DISABLED)
 
+# Layout widgets
+input_label.pack(pady=5)
+code_input.pack(padx=10, pady=5)
+analyze_button.pack(pady=5)
+result_label.pack(pady=5)
+result_output.pack(padx=10, pady=5)
 
-
-def maindef(code):
-    def check_missing_semicolons(code):
-        pattern = r"[^\s;{}]\s*$"
-        errors = []
-        for i, line in enumerate(code.splitlines(), 1):
-            if re.search(pattern, line):
-                errors.append(f"Line {i}: Missing semicolon.")
-        return errors
-
-    def analyse_code(code):
-        errors = []
-        errors.extend(check_missing_semicolons(code))
-        return errors
-
-    if __name__ == "__main__":
-        print("Enter your code (type END on a new line to finish):")
-        code_lines = []
-        while True:
-            line = input()
-            if line.strip().upper() == "END":
-                break
-            code_lines.append(line)
-
-        code = "\n".join(code_lines)
-        errors = analyse_code(code)
-        if errors:
-            print("Issues found:")
-            for errors in errors:
-                print(errors)
-
-        else: 
-            print("No issues found!")
-
-c_button = tk.Button(root, text="C", command=maindef())
-c_button.pack(padx=10, pady=10)
+# Run the application
+root.mainloop()
