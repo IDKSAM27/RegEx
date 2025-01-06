@@ -7,7 +7,8 @@ def check_missing_semicolons(code):
     pattern = r"[^\s;{}]\s*$"
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
-        if re.search(pattern, line):
+        
+        if re.search(pattern, line): 
             errors.append(f"Line {i}: Missing semicolon.")
     return errors
 
