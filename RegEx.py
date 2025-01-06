@@ -4,10 +4,10 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 
 def check_missing_semicolons(code):
-    pattern = r"[^\s;{}]\s*$"
+    pattern = r"^(?!\s*#)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
-        
+
         if re.search(pattern, line): 
             errors.append(f"Line {i}: Missing semicolon.")
     return errors
@@ -55,4 +55,3 @@ result_output.pack(padx=10, pady=5)
 
 # Run the application
 root.mainloop()
-#TODO: In the #include and int main(), the code is expecting ; even in those lines, fix it!
