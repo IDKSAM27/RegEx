@@ -14,6 +14,7 @@ def check_missing_semicolons(code):
     return errors
 
 def analyse_code(code):
+    # This def is purely for returning errors 
     errors = []
     errors.extend(check_missing_semicolons(code))
     return errors
