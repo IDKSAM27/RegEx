@@ -4,6 +4,7 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 
 def check_missing_semicolons(code):
+    # The below pattern checks for missing semicolons, if neglects the error if any of the special case appears.
     pattern = r"^(?!\s*#)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
