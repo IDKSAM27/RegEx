@@ -57,5 +57,4 @@ result_output.pack(padx=10, pady=5)
 
 # Run the application
 root.mainloop()
-I want a gui window before the main window asking which language to be put in the code box and go to that def to analyse code
 # Make an initial window for asking the programming language the user want to enter (eg., Python or C)
