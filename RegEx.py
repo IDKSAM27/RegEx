@@ -106,5 +106,3 @@ continue_button.pack(pady=10)
 
 # Run the language selector loop
 language_selector.mainloop()
-
-# Make an initial window for asking the programming language the user want to enter (eg., Python or C)
