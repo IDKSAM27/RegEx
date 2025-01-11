@@ -103,6 +103,9 @@ selected_language = tk.StringVar()
 language_label = tk.Label(language_selector, text="Select the programming language:")
 language_label.pack(pady=10)
 
+example_button = tk.Button(root, text="Load Example", command=set_language_example)
+example_button.pack(pady=5)
+
 languages = ["C++", "Python"]
 for lang in languages:
     rb = tk.Radiobutton(language_selector, text=lang, value=lang, variable=selected_language)
