@@ -106,3 +106,5 @@ continue_button.pack(pady=10)
 
 # Run the language selector loop
 language_selector.mainloop()
+
+How to make this project better?
