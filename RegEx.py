@@ -86,6 +86,13 @@ def open_main_window():
     # Run the main loop
     root.mainloop()
 
+def set_language_example():
+    if selected_language.get() == "C++":
+        example_code = "// Example C++ Code\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}"
+    elif selected_language.get() == "Python":
+        example_code = "# Example Python Code\nprint(\"Hello, World!\")"
+    code_input.delete("1.0", tk.END)
+    code_input.insert(tk.END, example_code)
 
 # Create the language selector window
 language_selector = tk.Tk()
