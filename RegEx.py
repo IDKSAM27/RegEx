@@ -102,7 +102,7 @@ language_label.pack(pady=10)
 
 languages = ["C++", "Python"]
 for lang in languages:
-    rb = tk.Radiobutton(language_selector, text=lang, value=lang, variable=selected_language)
+    rb = tk.Radiobutton(language_selector, text=lang, value=lang, variable=selected_language, indicator=0)
     rb.pack(anchor="w", padx=20)
 
 continue_button = tk.Button(language_selector, text="Continue", command=open_main_window)
