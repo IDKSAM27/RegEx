@@ -63,6 +63,7 @@ def open_main_window():
     root.title(f"Code Analyzer - {selected_language.get()}")
 
     # Create widgets
+    example_btn = tk.Button(root, text="Show example", command=set_language_example)
     input_label = tk.Label(root, text=f"Enter your {selected_language.get()} code below:")
     global code_input
     code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=15)
@@ -77,6 +78,7 @@ def open_main_window():
     analyze_button.pack(pady=5)
     result_label.pack(pady=5)
     result_output.pack(padx=10, pady=5)
+    example_btn.pack(pady=5)
 
     # Run the main loop
     root.mainloop()
@@ -98,8 +100,8 @@ selected_language = tk.StringVar()
 language_label = tk.Label(language_selector, text="Select the programming language:")
 language_label.pack(pady=10)
 
-example_button = tk.Button(language_selector, text="Load Example", command=set_language_example)
-example_button.pack(pady=5)
+# example_button = tk.Button(language_selector, text="Load Example", command=set_language_example)
+# example_button.pack(pady=5)
 
 languages = ["C++", "Python"]
 for lang in languages:
