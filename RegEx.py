@@ -53,7 +53,7 @@ def analyse_code_gui():
         result_output.delete("1.0", tk.END)
         result_output.insert(tk.END, "No issues found!")
         result_output.config(state=tk.DISABLED)
-
+    
 
 # Function to open the main window
 def open_main_window():
@@ -103,7 +103,8 @@ selected_language = tk.StringVar()
 language_label = tk.Label(language_selector, text="Select the programming language:")
 language_label.pack(pady=10)
 
-example_button = tk.Button(root, text="Load Example", command=set_language_example)
+
+example_button = tk.Button(language_selector, text="Load Example", command=set_language_example)
 example_button.pack(pady=5)
 
 languages = ["C++", "Python"]
