@@ -3,7 +3,6 @@ import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import messagebox
 
-
 # Function to check missing semicolons for C++
 def check_missing_semicolons(code):
     # The below pattern checks for missing semicolons, if neglects the error if any of the special case appears.
@@ -14,7 +13,6 @@ def check_missing_semicolons(code):
             errors.append(f"Line {i}: Missing semicolon.")
     return errors
 
-
 # Function to check syntax for Python
 def check_python_syntax(code):
     errors = []
@@ -24,7 +22,6 @@ def check_python_syntax(code):
         errors.append(f"Line {e.lineno}: {e.msg}")
     return errors
 
-
 # Function to analyze code based on language
 def analyse_code(code, language):
     errors = []
@@ -33,7 +30,6 @@ def analyse_code(code, language):
     elif language == "Python":
         errors.extend(check_python_syntax(code))
     return errors
-
 
 # Function to analyze code in the GUI
 def analyse_code_gui():
@@ -53,7 +49,6 @@ def analyse_code_gui():
         result_output.delete("1.0", tk.END)
         result_output.insert(tk.END, "No issues found!")
         result_output.config(state=tk.DISABLED)
-    
 
 # Function to open the main window
 def open_main_window():
@@ -102,7 +97,6 @@ selected_language = tk.StringVar()
 
 language_label = tk.Label(language_selector, text="Select the programming language:")
 language_label.pack(pady=10)
-
 
 example_button = tk.Button(language_selector, text="Load Example", command=set_language_example)
 example_button.pack(pady=5)
