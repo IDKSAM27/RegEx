@@ -63,7 +63,7 @@ def open_main_window():
     root.title(f"Code Analyzer - {selected_language.get()}")
 
     # Create widgets
-    example_btn = tk.Button(root, text="Show example", command=set_language_example)
+    example_btn = tk.Button(root, text="Show example code", command=set_language_example)
     input_label = tk.Label(root, text=f"Enter your {selected_language.get()} code below:")
     global code_input
     code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=15)
