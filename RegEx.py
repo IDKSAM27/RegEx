@@ -110,3 +110,4 @@ continue_button.pack(pady=10)
 
 # Run the language selector loop
 language_selector.mainloop()
+# Use the same RE technique in python too!
