@@ -110,4 +110,3 @@ continue_button.pack(pady=10)
 
 # Run the language selector loop
 language_selector.mainloop()
-# Also error free the comments in the C++ using the same RE.
