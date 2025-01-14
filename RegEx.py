@@ -7,7 +7,14 @@ from tkinter import messagebox
 def check_missing_semicolons(code):
     # The below pattern checks for missing semicolons, if neglects the error if any of the special case appears.
     pattern = r"^(?!\s*#)(?!\s*//)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
+
+    """
     # (?!\s*#) Negative lookahead assertion. Ensures that the line does not start with optional whitespace (\s*) followed by a #
+    # (?!.*\b(main|if|else|while|for|switch|case)\b)
+    # \b: A word boundary. Ensures the keywords are matched as whole words, not as part of longer words (e.g., mainframe wouldn't match main).
+    # (main|if|else|while|for|switch|case): A group with an alternation (|). Matches any one of the listed keywords.
+    """
+
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
         if re.search(pattern, line):
@@ -111,4 +118,4 @@ continue_button.pack(pady=10)
 
 # Run the language selector loop
 language_selector.mainloop()
-# Use the same RE technique in python too!
+# Use the same RE technique in python too !
