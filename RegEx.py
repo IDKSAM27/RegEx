@@ -9,10 +9,25 @@ def check_missing_semicolons(code):
     pattern = r"^(?!\s*#)(?!\s*//)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
 
     """
-    # (?!\s*#) Negative lookahead assertion. Ensures that the line does not start with optional whitespace (\s*) followed by a #
-    # (?!.*\b(main|if|else|while|for|switch|case)\b)
-    # \b: A word boundary. Ensures the keywords are matched as whole words, not as part of longer words (e.g., mainframe wouldn't match main).
-    # (main|if|else|while|for|switch|case): A group with an alternation (|). Matches any one of the listed keywords.
+    (?!\s*#) = Negative lookahead assertion. Ensures that the line does not start with optional whitespace (\s*) followed by a #
+
+    (?!.*\b(main|if|else|while|for|switch|case)\b) =
+
+    \b : A word boundary. Ensures the keywords are matched as whole words, not as part of longer words (e.g., mainframe wouldn't match main).
+
+    (main|if|else|while|for|switch|case) : A group with an alternation (|). Matches any one of the listed keywords.
+
+    .* : Matches zero or more characters of any kind (except newlines), as long as previous conditions are satisfied.
+
+    [^\s;{}] : A character class that matches any single character not in the set:
+    \s : Whitespace characters (spaces, tabs, etc.).
+    ; : A semicolon.
+    { and } : Curly braces.
+
+    \s* : Matches zero or more whitespace characters at the end of the line.
+
+    
+
     """
 
     errors = []
