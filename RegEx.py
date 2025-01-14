@@ -4,7 +4,7 @@ from tkinter import scrolledtext
 from tkinter import messagebox
 
 # Function to check missing semicolons for C++
-def check_missing_semicolons(code):
+def check_missing_semicolons_cpp(code):
     # The below pattern checks for missing semicolons, if neglects the error if any of the special case appears.
     pattern = r"^(?!\s*#)(?!\s*//)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
 
@@ -26,10 +26,8 @@ def check_missing_semicolons(code):
 
     \s* : Matches zero or more whitespace characters at the end of the line.
 
-    
-
+    $ : Matches the end of the string.
     """
-
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
         if re.search(pattern, line):
@@ -49,7 +47,7 @@ def check_python_syntax(code):
 def analyse_code(code, language):
     errors = []
     if language == "C++":
-        errors.extend(check_missing_semicolons(code))
+        errors.extend(check_missing_semicolons_cpp(code))
     elif language == "Python":
         errors.extend(check_python_syntax(code))
     return errors
