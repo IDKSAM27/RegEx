@@ -129,7 +129,6 @@ for lang in languages:
 continue_button = tk.Button(language_selector, text="Continue", command=open_main_window)
 continue_button.pack(pady=10)
 
-# Run the language selector loop
 language_selector.mainloop()
 # Use the same RE technique in python too !
 # Commenting after any {} in cpp will cause missing semicolon error.
