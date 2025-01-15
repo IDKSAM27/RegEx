@@ -51,7 +51,7 @@ def analyse_python_code(code):
 
 # Function to analyze code based on language
 
-def analyse_code(code, language):
+def analyse_cpp_code(code, language):
     errors = []
     if language == "C++":
         errors.extend(check_missing_semicolons_cpp(code))
@@ -62,13 +62,13 @@ def analyse_code(code, language):
 
 # Function to analyze code in the GUI
 
-def analyse_code_gui():
+def analyse_cpp_code_gui():
     code = code_input.get("1.0", tk.END).strip()
     if not code:
         messagebox.showwarning("Warning", "Please enter some code to analyze.")
         return
 
-    errors = analyse_code(code, selected_language.get())
+    errors = analyse_cpp_code(code, selected_language.get())
     if errors:
         result_output.config(state=tk.NORMAL)
         result_output.delete("1.0", tk.END)
@@ -101,7 +101,7 @@ def open_main_window():
     input_label = tk.Label(root, text=f"Enter your {selected_language.get()} code below:")
     global code_input
     code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=15)
-    analyze_button = tk.Button(root, text="Analyze Code", command=analyse_code_gui)
+    analyze_button = tk.Button(root, text="Analyze Code", command=analyse_cpp_code_gui)
     result_label = tk.Label(root, text="Results:")
     global result_output
     result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=10, state=tk.DISABLED)
