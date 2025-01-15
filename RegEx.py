@@ -31,6 +31,7 @@ def check_missing_semicolons_cpp(code):
 
     $ : Matches the end of the string.
     """
+    
     errors = []
     for i, line in enumerate(code.splitlines(), 1):
         if re.search(pattern, line):
