@@ -40,7 +40,7 @@ def check_missing_semicolons_cpp(code):
 
 # Function to check syntax for Python
 
-def check_python_syntax(code):
+def analyse_python_code(code):
     errors = []
     try:
         compile(code, "<string>", "exec")
@@ -56,7 +56,7 @@ def analyse_code(code, language):
     if language == "C++":
         errors.extend(check_missing_semicolons_cpp(code))
     elif language == "Python":
-        errors.extend(check_python_syntax(code))
+        errors.extend(analyse_python_code(code))
     return errors
 
 
