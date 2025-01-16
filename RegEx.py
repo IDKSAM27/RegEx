@@ -5,7 +5,7 @@ from tkinter import messagebox
 
 # Function to check missing semicolons for C++
 def check_missing_semicolons_cpp(code):
-    
+
     # The below pattern checks for missing semicolons, if neglects the error if any of the special case appears.
     pattern = r"^(?!\s*#)(?!\s*//)(?!.*\b(main|if|else|while|for|switch|case)\b).*[^\s;{}]\s*$"
     """
@@ -130,5 +130,5 @@ continue_button = tk.Button(language_selector, text="Continue", command=open_mai
 continue_button.pack(pady=10)
 
 language_selector.mainloop()
-# Use the same RE technique in python too !
-# Commenting after any {} in cpp will cause missing semicolon error.
+# Use the same RE technique in python too.
+# Commenting after any {} in cpp will cause missing semicolon error
