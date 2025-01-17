@@ -112,10 +112,10 @@ def set_language_example():
     code_input.delete("1.0", tk.END)
     code_input.insert(tk.END, example_code)
 
-# def highlight_errors(code, errors):
-#     code_input.tag_remove("error", "1.0", tk.END)
-#     for error in errors:
-#         line_number = int(errors.split(":"))
+def highlight_errors(code, errors):
+    code_input.tag_remove("error", "1.0", tk.END)
+    for error in errors:
+        line_number = int(errors.split(":"))
 
 # Create the language selector window
 language_selector = tk.Tk()
