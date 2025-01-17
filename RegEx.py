@@ -51,6 +51,7 @@ def analyse_cpp_code(code, language):
     elif language == "Python":
         errors.extend(analyse_python_code(code))
     return errors
+    highlight_errors(code, errors)
 
 # Function to analyze code in the GUI
 def analyse_cpp_code_gui():
