@@ -71,6 +71,8 @@ def analyse_cpp_code_gui():
         result_output.insert(tk.END, "No issues found!")
         result_output.config(state=tk.DISABLED)
 
+    highlight_errors(code, errors)
+
 # Function to open the main window
 def open_main_window():
     if not selected_language.get():
