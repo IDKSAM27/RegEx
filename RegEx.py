@@ -126,7 +126,7 @@ def highlight_errors(code, errors):
         line_number = int(errors.split(":")[0].split(" ")[1])
         start_index = f"{line_number}.0"
         end_index = f"{line_number}.end"
-        code_input.tag_add("errors", start_index, end_index)
+        code_input.tag_add("errors", start_index, end_index)                                
     code_input.tag_config("error", background="yellow", foreground="red")
 
 # Create the language selector window
