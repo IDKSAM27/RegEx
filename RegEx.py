@@ -150,4 +150,3 @@ language_selector.mainloop()
 
 # Use the same RE technique in python too.
 # Commenting after any {} in cpp will cause missing semicolon error
-# Next, maybe add a error highlighter!
