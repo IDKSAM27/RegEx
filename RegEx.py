@@ -43,6 +43,7 @@ def analyse_python_code(code):
         errors.append(f"Line {e.lineno}: {e.msg}")
     return errors
 
+
 # Function to analyze code based on language
 def analyse_cpp_code(code, language):
     errors = []
@@ -51,7 +52,7 @@ def analyse_cpp_code(code, language):
     elif language == "Python":
         errors.extend(analyse_python_code(code))
     return errors
-    highlight_errors(code, errors)
+
 
 # Function to analyze code in the GUI
 def analyse_cpp_code_gui():
@@ -66,11 +67,16 @@ def analyse_cpp_code_gui():
         result_output.delete("1.0", tk.END)
         result_output.insert(tk.END, "Issues found:\n" + "\n".join(errors))
         result_output.config(state=tk.DISABLED)
+
+        highlight_errors(code, errors)
+
     else:
         result_output.config(state=tk.NORMAL)
         result_output.delete("1.0", tk.END)
         result_output.insert(tk.END, "No issues found!")
         result_output.config(state=tk.DISABLED)
+
+        code_input.tag_remove("error", "1.0", tk.END)
 
 
 # Function to open the main window
@@ -139,6 +145,7 @@ continue_button = tk.Button(language_selector, text="Continue", command=open_mai
 continue_button.pack(pady=10)
 
 language_selector.mainloop()
+
 # Use the same RE technique in python too.
 # Commenting after any {} in cpp will cause missing semicolon error
 # Next, maybe add a error highlighter!
