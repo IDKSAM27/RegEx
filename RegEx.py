@@ -123,10 +123,10 @@ def set_language_example():
 def highlight_errors(code, errors):
     code_input.tag_remove("error", "1.0", tk.END)
     for error in errors:
-        line_number = int(errors.split(":")[0].split(" ")[1])
+        line_number = int(error.split(":")[0].split(" ")[1])
         start_index = f"{line_number}.0"
         end_index = f"{line_number}.end"
-        code_input.tag_add("errors", start_index, end_index)                                
+        code_input.tag_add("error", start_index, end_index)                                
     code_input.tag_config("error", background="yellow", foreground="red")
 
 # Create the language selector window
