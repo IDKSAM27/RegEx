@@ -1,8 +1,6 @@
 import re
 import tkinter as tk
-from tkinter import scrolledtext
-from tkinter import messagebox
-from tkinter import filedialog
+from tkinter import scrolledtext, messagebox, filedialog
 
 # Function to check missing semicolons for C++
 def check_missing_semicolons_cpp(code):
