@@ -91,6 +91,7 @@ def open_main_window():
     root.title(f"Code Analyzer - {selected_language.get()}")
 
     # Create widgets
+    save_button = tk.Button(root, text="Save Results", command=save_results)
     example_btn = tk.Button(root, text="Show example code", command=set_language_example)
     input_label = tk.Label(root, text=f"Enter your {selected_language.get()} code below:")
     global code_input
@@ -107,6 +108,7 @@ def open_main_window():
     result_label.pack(pady=5)
     result_output.pack(padx=10, pady=5)
     example_btn.pack(pady=5)
+    save_button.pack(pady=5)
 
     # Run the main loop
     root.mainloop()
@@ -156,9 +158,6 @@ for lang in languages:
 continue_button = tk.Button(language_selector, text="Continue", command=open_main_window)
 continue_button.pack(pady=10)
 
-# General purpose gui
-save_button = tk.Button(root, text="Save Results", command=save_results)
-save_button.pack(pady=5)
 
 language_selector.mainloop()
 
