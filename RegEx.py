@@ -128,12 +128,16 @@ def highlight_errors(code, errors):
         code_input.tag_add("error", start_index, end_index)                                
     code_input.tag_config("error", background="yellow", foreground="red")
 
-# def save_results():
-#     results = result_output.get("1.0", tk.END).strip()
-#     if not results:
-#         messagebox.showinfo("Info", "No results to save.")
-#         return
-#     file_path = tk.filedialog
+def save_results():
+    results = result_output.get("1.0", tk.END).strip()
+    if not results:
+        messagebox.showinfo("Info", "No results to save.")
+        return
+    file_path = tk.filedialog.asksaveasfilename(defaultextension = ".txt", filetypes = [("Text Files", "*.txt")])
+    if file_path:
+        with open(file_path, "w") as file:
+            file.write(results)
+        messagebox.showinfo("Info", "Results saved successfully.")
 
 # Create the language selector window
 language_selector = tk.Tk()
@@ -151,6 +155,10 @@ for lang in languages:
 
 continue_button = tk.Button(language_selector, text="Continue", command=open_main_window)
 continue_button.pack(pady=10)
+
+# General purpose gui
+save_button = tk.Button(root, text="Save Results", command=save_results)
+save_button.pack(pady=5)
 
 language_selector.mainloop()
 
