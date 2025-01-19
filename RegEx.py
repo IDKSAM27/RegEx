@@ -1,6 +1,7 @@
 import re
 import tkinter as tk
 from tkinter import scrolledtext, messagebox, filedialog
+import execjs
 
 # Function to check missing semicolons for C++
 def check_missing_semicolons_cpp(code):
@@ -44,12 +45,14 @@ def analyse_python_code(code):
 
 
 # Function to analyze code based on language
-def analyse_cpp_code(code, language):
+def analyse_code_redirector(code, language):
     errors = []
     if language == "C++":
         errors.extend(check_missing_semicolons_cpp(code))
     elif language == "Python":
         errors.extend(analyse_python_code(code))
+    elif language == "JS":
+        errors.extend(analyse_javascript_code(code))
     return errors
 
 
@@ -60,7 +63,7 @@ def analyse_code_gui():
         messagebox.showwarning("Warning", "Please enter some code to analyze.")
         return
 
-    errors = analyse_cpp_code(code, selected_language.get())
+    errors = analyse_code_redirector(code, selected_language.get())
     if errors:
         result_output.config(state=tk.NORMAL)
         result_output.delete("1.0", tk.END)
@@ -76,6 +79,14 @@ def analyse_code_gui():
         result_output.config(state=tk.DISABLED)
 
         code_input.tag_remove("error", "1.0", tk.END)
+    
+def analyse_javascript_code(code, language):
+    errors = []
+    try:
+        execjs.eval(code)
+    except Exception as e:
+        errors.append(str(e))
+    return errors
 
 
 # Function to open the main window
@@ -118,6 +129,8 @@ def set_language_example():
         example_code = "// Example C++ Code\n#include <iostream>\nint main() {\n    std::cout << \"Hello, World!\";\n    return 0;\n}"
     elif selected_language.get() == "Python":
         example_code = "# Example Python Code\nprint(\"Hello, World!\")"
+    elif selected_language.get() == "JS":
+        example_code = "// Example JS code\nconsole.log(\"Hello, World!\")"
     code_input.delete("1.0", tk.END)
     code_input.insert(tk.END, example_code)
 
@@ -150,7 +163,7 @@ selected_language = tk.StringVar()
 language_label = tk.Label(language_selector, text="Select the programming language:")
 language_label.pack(pady=10)
 
-languages = ["C++", "Python"]
+languages = ["C++", "Python", "JS"]
 for lang in languages:
     rb = tk.Radiobutton(language_selector, text=lang, value=lang, variable=selected_language, indicatoron=0)
     rb.pack(anchor="w", padx=20, fill="x")
