@@ -80,7 +80,7 @@ def analyse_code_gui():
 
         code_input.tag_remove("error", "1.0", tk.END)
     
-def analyse_javascript_code(code, language):
+def analyse_javascript_code(code):
     errors = []
     try:
         execjs.eval(code)
