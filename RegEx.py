@@ -102,13 +102,13 @@ def open_main_window():
     result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=10, state=tk.DISABLED)
 
     # Layout widgets
+    save_button.pack(pady=5)
+    example_btn.pack(pady=5)
     input_label.pack(pady=5)
     code_input.pack(padx=10, pady=5)
     analyze_button.pack(pady=5)
     result_label.pack(pady=5)
     result_output.pack(padx=10, pady=5)
-    example_btn.pack(pady=5)
-    save_button.pack(pady=5)
 
     # Run the main loop
     root.mainloop()
