@@ -2,6 +2,7 @@ import re
 import tkinter as tk
 from tkinter import scrolledtext
 from tkinter import messagebox
+from tkinter import filedialog
 
 # Function to check missing semicolons for C++
 def check_missing_semicolons_cpp(code):
@@ -128,6 +129,13 @@ def highlight_errors(code, errors):
         end_index = f"{line_number}.end"
         code_input.tag_add("error", start_index, end_index)                                
     code_input.tag_config("error", background="yellow", foreground="red")
+
+# def save_results():
+#     results = result_output.get("1.0", tk.END).strip()
+#     if not results:
+#         messagebox.showinfo("Info", "No results to save.")
+#         return
+#     file_path = tk.filedialog
 
 # Create the language selector window
 language_selector = tk.Tk()
