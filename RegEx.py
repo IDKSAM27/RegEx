@@ -79,15 +79,6 @@ def analyse_code_gui():
         result_output.config(state=tk.DISABLED)
 
         code_input.tag_remove("error", "1.0", tk.END)
-    
-def analyse_javascript_code(code):
-    errors = []
-    try:
-        execjs.eval(code)
-    except Exception as e:
-        errors.append(str(e))
-    return errors
-
 
 # Function to open the main window
 def open_main_window():
