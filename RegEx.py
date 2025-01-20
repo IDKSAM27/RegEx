@@ -43,6 +43,13 @@ def analyse_python_code(code):
         errors.append(f"Line {e.lineno}: {e.msg}")
     return errors
 
+def analyse_javascript_code(code):
+    errors = []
+    try:
+        execjs.eval(code)
+    except Exception as e:
+        errors.append(str(e))
+    return errors
 
 # Function to analyze code based on language
 def analyse_code_redirector(code, language):
