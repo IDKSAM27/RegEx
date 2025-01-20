@@ -63,7 +63,6 @@ def analyse_code_redirector(code, language):
         errors.extend(analyse_javascript_code(code))
     return errors
 
-
 # Function to analyze code in the GUI
 def analyse_code_gui():
     code = code_input.get("1.0", tk.END).strip()
@@ -169,7 +168,6 @@ for lang in languages:
 
 continue_button = tk.Button(language_selector, text="Continue", command=open_main_window)
 continue_button.pack(pady=10)
-
 
 language_selector.mainloop()
 
