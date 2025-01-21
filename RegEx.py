@@ -48,8 +48,14 @@ def analyse_javascript_code(code):
     try:
         execjs.eval(code)
     except Exception as e:
-        # errors.append(f"Line {e.lineno}: {e.msg}")
-        errors.append(str(e))
+        # Extract line number if available
+        error_message = str(e)
+        line_match = re.search(r'line (\d+)', error_message, re.IGNORECASE)
+        if line_match:
+            line_number = line_match.group(1)
+            errors.append(f"Line {line_number}: {error_message}")
+        else:
+            errors.append(error_message)
     return errors
 
 # Function to analyze code based on language
