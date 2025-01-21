@@ -138,14 +138,28 @@ def set_language_example():
     code_input.delete("1.0", tk.END)
     code_input.insert(tk.END, example_code)
 
+# def highlight_errors(code, errors):
+#     code_input.tag_remove("error", "1.0", tk.END)
+#     for error in errors:
+#         line_number = int(error.split(":")[0].split(" ")[1])
+#         start_index = f"{line_number}.0"
+#         end_index = f"{line_number}.end"
+#         code_input.tag_add("error", start_index, end_index)                                
+#     code_input.tag_config("error", background="yellow", foreground="red")
+
 def highlight_errors(code, errors):
     code_input.tag_remove("error", "1.0", tk.END)
     for error in errors:
-        line_number = int(error.split(":")[0].split(" ")[1])
-        start_index = f"{line_number}.0"
-        end_index = f"{line_number}.end"
-        code_input.tag_add("error", start_index, end_index)                                
+        try:
+            line_number = int(error.split(":")[0].split(" ")[1])  # Extract line number
+            start_index = f"{line_number}.0"
+            end_index = f"{line_number}.end"
+            code_input.tag_add("error", start_index, end_index)
+        except (ValueError, IndexError):
+            # Skip if no valid line number is found
+            continue
     code_input.tag_config("error", background="yellow", foreground="red")
+
 
 def save_results():
     results = result_output.get("1.0", tk.END).strip()
