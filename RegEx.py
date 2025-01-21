@@ -193,4 +193,4 @@ language_selector.mainloop()
 
 # Use the same RE technique in python too.
 # Commenting after any {} in cpp will cause missing semicolon error
-# Highlighting problem is js analysis! today
+# Highlighting problem is js analysis!
