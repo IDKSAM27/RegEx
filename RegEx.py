@@ -160,7 +160,6 @@ def highlight_errors(code, errors):
             continue
     code_input.tag_config("error", background="yellow", foreground="red")
 
-
 def save_results():
     results = result_output.get("1.0", tk.END).strip()
     if not results:
@@ -193,4 +192,4 @@ language_selector.mainloop()
 
 # Use the same RE technique in python too.
 # Commenting after any {} in cpp will cause missing semicolon error
-# Highlighting problem is js analysis!
+# Highlighting problem is js analysis
