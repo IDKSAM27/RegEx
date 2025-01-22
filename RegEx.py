@@ -54,10 +54,11 @@ def analyse_javascript_code(code):
 
         line_match = re.search(r'line (\d+)', error_message, re.IGNORECASE)
         if line_match:
-            line_number = int(line_match.group(1)) # Convert to integer
+            line_number = int(line_match.group(1)) # Convert to integer (This is what I changed!)
             errors.append(f"Line {line_number}: {error_message}")
         else:
-            errors.append(error_message)
+            # errors.append(error_message)
+            errors.append(f"Error: {error_message}")
     return errors
 
 # Function to analyze code based on language
