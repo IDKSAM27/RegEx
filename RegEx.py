@@ -2,6 +2,7 @@ import re
 import tkinter as tk
 from tkinter import scrolledtext, messagebox, filedialog
 import execjs
+import ttkbootstrap as ttk
 
 # Function to check missing semicolons for C++
 def check_missing_semicolons_cpp(code):
@@ -175,7 +176,9 @@ def save_results():
         messagebox.showinfo("Info", "Results saved successfully.")
 
 # Create the language selector window
-language_selector = tk.Tk()
+# language_selector = tk.Tk()
+# language_selector.title("Select Language")
+language_selector = ttk.Window(themename="solar")
 language_selector.title("Select Language")
 
 selected_language = tk.StringVar()
