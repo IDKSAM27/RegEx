@@ -50,9 +50,11 @@ def analyse_javascript_code(code):
     except Exception as e:
         # Extract line number if available
         error_message = str(e)
+        print(f"Error Message: {error_message}") # print the error message to debug.
+
         line_match = re.search(r'line (\d+)', error_message, re.IGNORECASE)
         if line_match:
-            line_number = line_match.group(1)
+            line_number = int(line_match.group(1)) # Convert to integer
             errors.append(f"Line {line_number}: {error_message}")
         else:
             errors.append(error_message)
