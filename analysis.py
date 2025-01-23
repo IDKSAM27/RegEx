@@ -59,13 +59,12 @@ def analyse_javascript_code(code):
             errors.append(f"Error: {error_message}")
     return errors
 
-# Function to analyze code based on language
+# Redirect analysis to the appropriate function
 def analyse_code_redirector(code, language):
-    errors = []
     if language == "C++":
-        errors.extend(check_missing_semicolons_cpp(code))
+        return check_missing_semicolons_cpp(code)
     elif language == "Python":
-        errors.extend(analyse_python_code(code))
+        return analyse_python_code(code)
     elif language == "JS":
-        errors.extend(analyse_javascript_code(code))
-    return errors
+        return analyse_javascript_code(code)
+    return []
