@@ -30,6 +30,7 @@ def check_missing_semicolons_cpp(code):
     for i, line in enumerate(code.splitlines(), 1):
         if re.search(pattern, line):
             errors.append(f"Line {i}: Missing semicolon.")
+            print(f"Line {i}: Missing semicolon.")
     return errors
 
 # Function to check syntax for Python
@@ -39,6 +40,7 @@ def analyse_python_code(code):
         compile(code, "<string>", "exec")
     except SyntaxError as e:
         errors.append(f"Line {e.lineno}: {e.msg}")
+        print(f"{e.msg}")
     return errors
 
 def analyse_javascript_code(code):
@@ -48,7 +50,7 @@ def analyse_javascript_code(code):
     except Exception as e:
         # Extract line number if available
         error_message = str(e)
-        print(f"Error Message: {error_message}") # print the error message to debug.
+        print(f"{error_message}") # print the error message to debug.
 
         line_match = re.search(r'line (\d+)', error_message, re.IGNORECASE)
         if line_match:

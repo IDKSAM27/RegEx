@@ -93,7 +93,7 @@ def highlight_errors(code_input, errors):
             start_index = f"{line_number}.0"
             end_index = f"{line_number}.end"
             code_input.tag_add("error", start_index, end_index)
-        except (ValueError, IndexError):
+        except (ValueError, IndexError, SyntaxError):
             # Skip if no valid line number is found
             continue
     code_input.tag_config("error", background="yellow", foreground="red")
