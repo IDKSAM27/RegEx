@@ -15,3 +15,4 @@ if __name__ == "__main__":
 # Use the same RE technique in python too.
 # Commenting after any {} in cpp will cause missing semicolon error
 # Highlighting problem is js analysis (nothing works bcs, highlighting def taked line "number" and js errors does not give line numbers in their error)
+# Add a button in the code block window to choose the language again.
