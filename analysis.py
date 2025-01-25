@@ -40,7 +40,7 @@ def analyse_python_code(code):
         compile(code, "<string>", "exec")
     except SyntaxError as e:
         errors.append(f"Line {e.lineno}: {e.msg}")
-        print(f"{e.msg}")
+        print(f"Line {e.lineno}{e.msg}")
     return errors
 
 def analyse_javascript_code(code):
