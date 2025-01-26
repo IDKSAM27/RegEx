@@ -25,7 +25,7 @@ def open_main_window(language_selector, selected_language):
     analyze_button = tk.Button(root, text="Analyze Code", command=lambda: analyse_code_gui(code_input, result_output, selected_language))
     result_label = tk.Label(root, text="Results:")
     result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=60, height=10, state=tk.DISABLED)
-    back_to_lang = tk.Button(root, text="Select Lang", command=open_language_selector(language_selector, selected_language))
+    back_to_lang = tk.Button(root, text="Select Lang", command=lambda: open_language_selector)
 
     # Layout widgets
     save_button.pack(pady=5)
