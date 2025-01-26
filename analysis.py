@@ -58,7 +58,7 @@ def analyse_javascript_code(code):
             errors.append(f"Line {line_number}: {error_message}")
         else:
             # errors.append(error_message)
-            errors.append(f"Error: {error_message}")
+            errors.append(f"{error_message}")
     return errors
 
 # Redirect analysis to the appropriate function
