@@ -35,6 +35,7 @@ def open_main_window(language_selector, selected_language):
     analyze_button.pack(pady=5)
     result_label.pack(pady=5)
     result_output.pack(padx=10, pady=5)
+    back_to_lang.pack(pady=5)
 
     root.mainloop()
 
