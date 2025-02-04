@@ -21,7 +21,7 @@ def open_main_window(language_selector, selected_language):
     save_button = tk.Button(root, text="Save Results", command=lambda: save_results(result_output))
     example_btn = tk.Button(root, text="Show example code", command=lambda: set_language_example(code_input, selected_language))
     input_label = tk.Label(root, text=f"Enter your {selected_language.get()} code below:")
-    code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=80, height=15)
+    code_input = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=80, height=25)
     analyze_button = tk.Button(root, text="Analyze Code", command=lambda: analyse_code_gui(code_input, result_output, selected_language))
     result_label = tk.Label(root, text="Results:")
     result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=80, height=10, state=tk.DISABLED)
