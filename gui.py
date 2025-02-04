@@ -4,6 +4,8 @@ from tkinter import filedialog
 from analysis import analyse_code_redirector
 from tkinter import Button, Label
 from tkinter.ttk import Radiobutton
+import os 
+import sys
 
 # Main GUI for analyzing code
 def open_main_window(language_selector, selected_language):
@@ -25,7 +27,7 @@ def open_main_window(language_selector, selected_language):
     analyze_button = tk.Button(root, text="Analyze Code", command=lambda: analyse_code_gui(code_input, result_output, selected_language))
     result_label = tk.Label(root, text="Results:")
     result_output = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=80, height=10, state=tk.DISABLED)
-    back_to_lang = tk.Button(root, text="Select Lang", command=lambda: language_selector)
+    back_to_lang = tk.Button(root, text="Select Lang", command=restart)
 
     # Layout widgets
     save_button.pack(pady=5)
@@ -111,3 +113,8 @@ def save_results(result_output):
         with open(file_path, "w") as file:
             file.write(results)
         messagebox.showinfo("Info", "Results saved successfully.")
+
+def restart():
+    python = sys.executable
+    os.execv(python, [python] + sys.argv)
+
