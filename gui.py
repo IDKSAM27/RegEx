@@ -2,8 +2,6 @@ import tkinter as tk
 from tkinter import scrolledtext, messagebox
 from tkinter import filedialog
 from analysis import analyse_code_redirector
-#from tkinter import Button, Label
-#from tkinter.ttk import Radiobutton
 import os 
 import sys
 
